@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { ref as dfRef, set } from "firebase/database";
 import { ref as stRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth, db, storage } from "../firebase";
@@ -48,9 +48,10 @@ const Register = () => {
         username: username,
         profilePicture: profilePictureUrl,
       });
-      navigate("/chat");
+      navigate("/");
     } catch (error) {
       setError("Unsuccessfull Login");
+      console.log(error);
     } finally {
       setLoading(false);
     }
@@ -78,7 +79,7 @@ const Register = () => {
           />
           <input
             required
-            type={showPassword?'text':'password'}
+            type={showPassword ? "text" : "password"}
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
